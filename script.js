@@ -7,7 +7,7 @@ form.addEventListener('submit', async (e) => {
 
 // Collect data and store in local storage
 
-async function getData() {
+function getData() {
     // Collect all inputs
     const firstname = document.getElementById('firstname').value
     const lastname = document.getElementById('lastname').value
