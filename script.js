@@ -14,6 +14,7 @@ async function getData() {
     const email = document.getElementById('email').value
     const image = document.getElementById('image').files[0];
     const address = document.getElementById('address').value
+    console.log(firstname)
 
     // Read image from html
     const reader = new FileReader();
@@ -80,17 +81,21 @@ async function fetchEcomData(){
         localStorage.setItem('productData', JSON.stringify(parsedData))
         // console.log(parsedData)
 
+        const productData = JSON.parse(localStorage.getItem('productData'))
+
         parsedData.forEach(productData => {
             displayData.innerHTML +=
             
             `
-            <div class="card d-flex m-5" style="width: 18rem;">
-                <img src="${productData.image}" class="card-img-top" alt="ProductPic" id="img" style="height: 18rem; width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">${productData.title}</h5>
-                    <h6>Price: ${productData.price}</h6>
-                    <h6>Rating: ${productData.rating.rate}</h6>
-                    <p class="card-text">${productData.description}</p>
+            <div class="col-12 col-sm-4 col-lg-3 p-2 mb-sm-0">
+                <div class="card text-center border-dark h-100">
+                    <img src="${productData.image}" class="card-img-top" alt="ProductPic" id="img" style="height: 180px; width: 180px; margin-left: 20%;">
+                    <div class="card-body">
+                        <h5 class="card-title">${productData.title}</h5>
+                        <h6>Price: ${productData.price}</h6>
+                        <h6>Rating: ${productData.rating.rate}</h6>
+                        <p class="card-text h-60">${productData.description}</p>
+                    </div>
                 </div>
             </div>
             `
