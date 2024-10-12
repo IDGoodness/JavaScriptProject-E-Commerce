@@ -2,6 +2,7 @@ const form = document.getElementById('login-form');
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault(); // Prevent the page from refreshing
+//   another way to do this is initiate the type in the submit button of a form to button. Like; type="button"
   await getData();
 });
 
@@ -33,7 +34,7 @@ async function getData() {
 
     // console.log(userData)
 
-    const storedData = localStorage.getItem('userData');
+    // const storedData = localStorage.getItem('userData');
     localStorage.setItem('userData', JSON.stringify(userData))
 
     window.location.href = 'dashboard.html';
@@ -54,12 +55,6 @@ async function getData() {
 function showData() {
     const displayData = document.getElementById('userDisplay')
     const userData = JSON.parse(localStorage.getItem('userData'))
-    // console.log(userData);
-
-    // userData.forEach(Data => {
-    //     const displayfname = document.getElementById('firstname')
-    //     displayfname.innerHTML += `${Data.firstname}`
-    // });
 
     const displayimage = document.getElementById('image');
     displayimage.src = userData.image;
@@ -88,7 +83,6 @@ async function fetchEcomData(){
         const fetchedData = await fetch('https://fakestoreapi.com/products');
         const parsedData = await fetchedData.json()
         localStorage.setItem('productData', JSON.stringify(parsedData))
-        // console.log(parsedData)
 
         const productData = JSON.parse(localStorage.getItem('productData'))
 
@@ -111,26 +105,15 @@ async function fetchEcomData(){
 
 
         });
-        // const displayimage = document.getElementById('img')
-        // displayimage.src = `${productData.image}`
+        
         
     } catch (err) {
         console.log("Emergency! Check this -->", err)
     }
 }
 
-// const logoutButton = document.getElementById('out');
-
-// logoutButton.addEventListener('click', () => {
-//     localStorage.clear();
-    
-//     window.location.href = ('index.html');
-// })
-
 function logOut() {
     localStorage.clear();
-    console.log("Clear!")
     
     window.location.href = 'index.html';
-    console.log("Clear here too!")
 }

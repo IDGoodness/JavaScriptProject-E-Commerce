@@ -7,6 +7,11 @@ body {
     /* margin-top: 100px; */
     display: flex;
     margin-left: 100px;
+    overflow: hidden;
+}
+
+.limiter {
+    overflow: hidden;
 }
 
 .login-container {
@@ -25,4 +30,3 @@ body {
     font-size: 14px;
     margin-top: 10px;
 }
-
